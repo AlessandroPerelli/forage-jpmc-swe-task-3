@@ -22,8 +22,8 @@ export class DataManipulator {
     const ratio = priceABC / priceDEF;
     this.historicalRatios.push(ratio); // Pushes the ratio to the historical ratios array
     const averageRatio = this.calculateTwelveMonthAverage(); // Calculates the 12-month average
-    const upperBound = 1 * 1.05 // Upper bound of the ratio is 10% higher than the average
-    const lowerBound = 1 * 0.95 // Lower bound of the ratio is 10% lower than the average
+    const upperBound = averageRatio * 1.10 // Upper bound of the ratio is 10% higher than the average
+    const lowerBound = averageRatio * 0.9 // Lower bound of the ratio is 10% lower than the average
     return {
       price_abc: priceABC,
       price_def: priceDEF,
