@@ -1,6 +1,7 @@
 import { ServerRespond } from "./DataStreamer";
 
 export interface Row {
+  // Definies the structure of the data that will be displayed in the dashboard
   price_abc: number;
   price_def: number;
   ratio: number;
@@ -12,13 +13,14 @@ export interface Row {
 
 export class DataManipulator {
   static generateRow(serverResponds: ServerRespond[]): Row {
+    // This function manipulates the data from the server to the format and values that will be displayed in the dashboard
     const priceABC =
       (serverResponds[0].top_ask.price + serverResponds[0].top_bid.price) / 2;
     const priceDEF =
       (serverResponds[1].top_ask.price + serverResponds[1].top_bid.price) / 2;
     const ratio = priceABC / priceDEF;
-    const upperBound = 1.10;
-    const lowerBound = 1.10;
+    const upperBound = ratio + (0.1*ratio); // Upper bound of the ratio is 10% higher than the average
+    const lowerBound = ratio - (0.1*ratio); // Lower bound of the ratio is 10% lower than the average
     return {
       price_abc: priceABC,
       price_def: priceDEF,
