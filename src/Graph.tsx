@@ -25,9 +25,9 @@ class Graph extends Component<IProps, {}> {
     )[0] as unknown) as PerspectiveViewerElement;
 
     const schema = {
-      stock: "string",
       top_ask_price: "float",
       top_bid_price: "float",
+      ratio: "float",
       timestamp: "date",
       upper_bound: "float",
       lower_bound: "float",
@@ -47,9 +47,9 @@ class Graph extends Component<IProps, {}> {
       elem.setAttribute(
         "aggregates",
         JSON.stringify({
-          stock: "distinctcount",
-          top_ask_price: "avg",
-          top_bid_price: "avg",
+          price_abc: "avg",
+          price_def: "avg",
+          ratio: "avg",
           timestamp: "distinct count",
           upper_bound: "avg",
           lower_bound: "avg",
