@@ -33,6 +33,7 @@ class App extends Component<{}, IState> {
         });
       });
       x++;
+      console.log(x);
       if (x > 1000) {
         clearInterval(interval);
       }
